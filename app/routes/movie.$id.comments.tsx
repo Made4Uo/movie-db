@@ -10,7 +10,7 @@ import { db } from "~/utils/db.server";
 import { useEffect, useRef } from "react";
 
 export async function loader({ params }: LoaderFunctionArgs) {
-  const data = await db.comment.findMany({
+  const data = await db.comment?.findMany({
     where: {
       movieId: params.id,
     },
