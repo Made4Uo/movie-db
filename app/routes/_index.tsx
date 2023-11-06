@@ -12,7 +12,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export async function loader({}: LoaderFunctionArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   const url = await fetch(
     "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
     {
