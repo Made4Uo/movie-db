@@ -33,14 +33,13 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
-  const data = await db.comment.create({
+  await db.comment.create({
     data: {
       message: formData.get("comment") as string,
       movieId: formData.get("id") as string,
     },
   });
 
-  console.log("comment data", data);
   return redirect(`/movie/${formData.get("id")}/comments`);
 }
 
