@@ -19,7 +19,6 @@ export async function loader({ params }: LoaderFunctionArgs) {
     },
   });
 
-  console.log("comment data", data);
   return json({ data });
 }
 
@@ -31,9 +30,6 @@ export async function action({ request }: ActionFunctionArgs) {
       movieId: formData.get("id") as string,
     },
   });
-
-  console.log("data", data);
-
   return json({ data });
 }
 
@@ -53,7 +49,6 @@ export default function Comment() {
     }
   }, [isSubmitting]);
 
-  console.log("id", data);
   return (
     <div className="rounded-lg border p-3">
       <h3 className="text-xl font-semibold mb-5">Your Opinion Matters</h3>
