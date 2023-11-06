@@ -50,6 +50,7 @@ export default function Comment() {
     }
   }, [isSubmitting]);
 
+  console.log("data", data, data.length);
   return (
     <div className="rounded-lg border p-3">
       <h3 className="text-xl font-semibold mb-5">Your Opinion Matters</h3>
@@ -79,7 +80,7 @@ export default function Comment() {
             </button>
           )}
         </Form>
-        {data ? (
+        {data.length > 1 ? (
           <div className="mt-5 flex flex-col gap-y-3">
             {data?.map((post) => (
               <div key={post.id}>
