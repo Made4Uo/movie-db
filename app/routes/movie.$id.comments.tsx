@@ -31,6 +31,7 @@ export async function action({ request }: ActionFunctionArgs) {
       movieId: formData.get("id") as string,
     },
   });
+  console.log("comment data", data);
   return json({ data });
 }
 
@@ -80,7 +81,7 @@ export default function Comment() {
             </button>
           )}
         </Form>
-        {data.length > 1 ? (
+        {data.length > 0 ? (
           <div className="mt-5 flex flex-col gap-y-3">
             {data?.map((post) => (
               <div key={post.id}>
