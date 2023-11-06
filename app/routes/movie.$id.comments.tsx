@@ -1,4 +1,5 @@
-import { ActionFunctionArgs, LoaderFunctionArgs, json } from "@remix-run/node";
+import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import {
   Form,
   useLoaderData,
@@ -78,13 +79,17 @@ export default function Comment() {
             </button>
           )}
         </Form>
-        <div className="mt-5 flex flex-col gap-y-3">
-          {data?.map((post) => (
-            <div key={post.id}>
-              <p>{post.message}</p>
-            </div>
-          ))}
-        </div>
+        {data ? (
+          <div className="mt-5 flex flex-col gap-y-3">
+            {data?.map((post) => (
+              <div key={post.id}>
+                <p>{post.message}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
