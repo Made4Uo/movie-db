@@ -8,7 +8,6 @@ import {
 
 import { db } from "~/utils/db.server";
 import { useEffect, useRef } from "react";
-import { ErrorBoundaryComponent } from "@remix-run/react/dist/routeModules";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const data = await db.comment?.findMany({
@@ -35,23 +34,6 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Comment() {
-  return renderComment("");
-}
-
-export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
-  return renderComment(error.message);
-};
-
-function renderComment(err: string) {
-  let errorComp: JSX.Element = <div></div>;
-  if (err.length > 0) {
-    //only render the error if we have something to say
-    errorComp = (
-      <p className="errorBox">
-        There was an error with your data: <i className="errorMsg">{err}</i>
-      </p>
-    );
-  }
   const { id } = useParams();
   const { data } = useLoaderData<typeof loader>();
   const navigation = useNavigation();
@@ -70,7 +52,7 @@ function renderComment(err: string) {
   return (
     <div className="rounded-lg border p-3">
       <h3 className="text-xl font-semibold mb-5">Your Opinion Matters</h3>
-      {errorComp}
+
       <div>
         <Form method="post" ref={formRef}>
           <textarea
@@ -104,6 +86,15 @@ function renderComment(err: string) {
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+export function ErrorBoundary(error: Error) {
+  console.error(error);
+  return (
+    <div>
+      <h1>Error occured while loading comments!</h1>
     </div>
   );
 }
