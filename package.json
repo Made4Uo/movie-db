@@ -1,10 +1,10 @@
 {
-  "name": "MoviesDB",
+  "name": "moviesdb",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "prisma generate && remix build",
+    "build": "remix build",
     "dev": "remix dev --manual",
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc",
@@ -33,5 +33,11 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "description": "- [Remix Docs](https://remix.run/docs)",
+  "version": "1.0.0",
+  "main": "remix.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

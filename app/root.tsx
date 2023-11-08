@@ -42,7 +42,7 @@ function Layout({ children }: { children: ReactNode }) {
     <>
       <nav className="px-10 pt5">
         <Link to="/" prefetch="intent" className="text-2xl font-semibold py-4">
-          Movie <span className="text-teal-500">DB</span>
+          Movies <span className="text-teal-500">DB</span>
         </Link>
       </nav>
       <main>{children}</main>
