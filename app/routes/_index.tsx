@@ -13,6 +13,7 @@ export const meta: MetaFunction = () => {
 };
 
 export async function loader({ params }: LoaderFunctionArgs) {
+  // "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
   const url = await fetch(
     "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
     {
@@ -65,6 +66,19 @@ export default function Index() {
                   </Link>
                 </h2>
                 <p className="text-gray-500 line-clamp-3">{movie.overview}</p>
+
+                <span>
+                  <b>Popularity: </b>
+                  {movie.popularity}
+                </span>
+                <span>
+                  <b>Vote Count: </b>
+                  {movie.vote_count}
+                </span>
+                <span>
+                  <b>Release Date: </b>
+                  {movie.release_date}
+                </span>
               </div>
             </div>
           ))}
