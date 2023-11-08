@@ -1,5 +1,5 @@
 {
-  "name": "MovieDB",
+  "name": "moviedb",
   "private": true,
   "sideEffects": false,
   "type": "module",
@@ -33,5 +33,11 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "description": "- [Remix Docs](https://remix.run/docs)",
+  "version": "1.0.0",
+  "main": "remix.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
