@@ -6,7 +6,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const exists = await db.comment.count({ where: { movieId: params.id } });
   console.log("db", exists);
   if (exists) {
-    const data = await db.comment?.findMany({
+    const data = await db.comment.findMany({
       where: {
         movieId: params.id,
       },
@@ -17,7 +17,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
     return json({ data });
   } else {
-    return json({});
+    return json({ data: null });
   }
 }
 
@@ -27,7 +27,7 @@ function CommentItem() {
   console.log("data", data);
   return (
     <div>
-      {data ? (
+      {data != null ? (
         <div className="mt-5 flex flex-col gap-y-3">
           {data.map((post: any) => (
             <div key={post.id}>
