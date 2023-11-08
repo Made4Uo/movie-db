@@ -3,16 +3,22 @@ import { useLoaderData } from "@remix-run/react";
 import { db } from "~/utils/db.server";
 
 export async function loader({ params }: LoaderFunctionArgs) {
-  const data = await db.comment?.findMany({
-    where: {
-      movieId: params.id,
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  const exists = await db.comment.count({ where: { movieId: params.id } });
+  console.log("db", exists);
+  if (exists) {
+    const data = await db.comment?.findMany({
+      where: {
+        movieId: params.id,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
 
-  return json({ data });
+    return json({ data });
+  } else {
+    return json({});
+  }
 }
 
 function CommentItem() {

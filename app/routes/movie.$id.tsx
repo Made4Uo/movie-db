@@ -3,6 +3,7 @@ import {
   type ActionFunctionArgs,
   type LoaderFunctionArgs,
   redirect,
+  type MetaFunction,
 } from "@remix-run/node";
 
 import {
@@ -16,6 +17,13 @@ import {
 import { useEffect, useRef } from "react";
 
 import { db } from "~/utils/db.server";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Movie Details" },
+    { name: "description", content: "Welcome to Movie Details!" },
+  ];
+};
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const url = await fetch(
