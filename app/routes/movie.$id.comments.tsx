@@ -3,7 +3,7 @@ import { useLoaderData } from "@remix-run/react";
 import { db } from "~/utils/db.server";
 
 export async function loader({ params }: LoaderFunctionArgs) {
-  const data = await db.comment.findMany({
+  const data = await db.comment?.findMany({
     where: {
       movieId: params.id,
     },
@@ -17,6 +17,8 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 function CommentItem() {
   const { data } = useLoaderData<typeof loader>();
+
+  console.log("data", data);
   return (
     <div>
       {data ? (

@@ -1,12 +1,3 @@
-export function ErrorBoundary(error: Error) {
-  console.error(error);
-  return (
-    <div className="bg-red-400">
-      <h1 className="text">Error occured while loading comments! ---</h1>
-    </div>
-  );
-}
-
 function CommentItem({ data }: { data: any }) {
   console.log("comment item", data);
   return (
@@ -26,3 +17,12 @@ function CommentItem({ data }: { data: any }) {
   );
 }
 export default CommentItem;
+
+export function ErrorBoundary(error: Error) {
+  console.error(error);
+  return (
+    <div className="bg-red-400">
+      <h1 className="text">Error occured while loading comments! ---</h1>
+    </div>
+  );
+}
