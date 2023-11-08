@@ -17,8 +17,6 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
 function CommentItem() {
   const { data } = useLoaderData<typeof loader>();
-
-  console.log("comment item", data);
   return (
     <div>
       {data ? (
