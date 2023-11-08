@@ -1,5 +1,5 @@
 {
-  "name": "MovieDB",
+  "name": "MoviesDB",
   "private": true,
   "sideEffects": false,
   "type": "module",
